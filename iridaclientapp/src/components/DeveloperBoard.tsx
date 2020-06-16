@@ -7,7 +7,17 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
         height: '100%',
-        position: 'relative'
+        position: 'relative',
+        overflow: 'auto',
+
+    },
+    mainBox: {
+        position: 'absolute',
+        display: 'flex',
+        flexDirection: 'column',
+        border: 2,
+        borderRadius: 10,
+        borderColor: "secondary.main"
     },
     button: {
         margin: theme.spacing(2)
@@ -22,8 +32,8 @@ export default function DeveloperBoard() {
     const classes = useStyles();
 
     return (
-        <Box overflow="auto" p={4} m={2} className={classes.root} border={2} borderRadius={10} borderColor="secondary.main">
-            <Box position='absolute' display="flex" flexDirection="column" p={4} m={2}>
+        <Box p={4} m={2} className={classes.root} border={2}>
+            <Box className={classes.mainBox} p={4} m={2}>
                 <Box>
                     <Button className={classes.button} variant="contained" color="secondary">1</Button>
                     <Button className={classes.button} variant="contained" color="secondary">2</Button>
