@@ -18,8 +18,10 @@ const useStyles = makeStyles((theme: Theme) =>
     mainBox: {
         position: 'absolute',
         display: 'flex',
-        height: '90%',
-        width: '90%',
+        left: theme.spacing(2),
+        right: theme.spacing(2),
+        top: theme.spacing(2),
+        bottom: theme.spacing(2),
         flexDirection: (wideScrenMode: Boolean) => wideScrenMode ? "column" : "row"
     },
     button: {
@@ -38,8 +40,8 @@ export default function DeveloperBoard() {
         <Box p={4} m={2} className={classes.root}>
             <Box className={classes.mainBox} p={4} m={2}>
                 <Box>
-                    <Button className={classes.button} variant="contained" color="secondary">1</Button>
-                    <Button className={classes.button} variant="contained" color="secondary">2</Button>
+                    <Button className={classes.button} variant="contained" color="secondary">Load</Button>
+                    <Button className={classes.button} variant="contained" color="secondary">Update</Button>
                 </Box>
                 <Box flexGrow="1" display="flex">
                     <TextField color="secondary"
@@ -49,6 +51,7 @@ export default function DeveloperBoard() {
                         multiline
                         defaultValue="Default Value"
                         variant="outlined"
+                        fullWidth={true}
                     />
                 </Box>
             </Box>
