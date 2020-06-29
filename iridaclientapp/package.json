@@ -15,6 +15,9 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
+    "react-split": "^2.0.9",
+    "react-split-pane": "^0.1.91",
+    "split.js": "^1.6.1",
     "typeface-roboto": "0.0.75",
     "typescript": "^3.7.5"
   },
