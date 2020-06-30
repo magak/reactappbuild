@@ -4,18 +4,14 @@ import Paper from '@material-ui/core/Paper';
 import Box from '@material-ui/core/Box';
 // import RootRef from '@material-ui/core/RootRef';
 
+import PlayerCard from './PlayerCard';
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    rootPaper: { 
+    paper: { 
         width: '100%',
         height: '100%',
         position: 'relative'
-    },
-    playersPaper: {
-
-    },
-    teamsPaper: {
-
     },
     rootBox: {
       display: 'flex',
@@ -37,15 +33,15 @@ export default function Dashboard() {
     const classes = useStyles();
 
     return (
-        <Paper className={classes.rootPaper} elevation={5} >
+        <Paper className={classes.paper} elevation={5} >
           <Box className={classes.rootBox}>
             <Box className={classes.playersBox}>
-              <Paper className={classes.rootPaper} elevation={3} >
-                
+              <Paper className={classes.paper} elevation={3} >
+                <PlayerCard/>
               </Paper>
             </Box>
             <Box className={classes.teamsBox}>
-              <Paper className={classes.rootPaper} elevation={3} >
+              <Paper className={classes.paper} elevation={3} >
                 
               </Paper>
             </Box>
