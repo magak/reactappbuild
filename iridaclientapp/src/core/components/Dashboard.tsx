@@ -5,15 +5,24 @@ import Box from '@material-ui/core/Box';
 // import RootRef from '@material-ui/core/RootRef';
 
 import PlayerCard from './PlayerCard';
-import { List, ListItem, ListSubheader, TextField, Button } from '@material-ui/core';
+import PlayersList from './PlayersList';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    paper: { 
-        width: '100%',
-        height: '100%',
-        position: 'relative',
-        overflow: 'auto'
+    rootPaper: {         
+      height: '100%',
+      position: 'relative',
+      overflow: 'auto'
+    },
+    playersPaper: {         
+      height: '100%',
+      position: 'absolute',
+      overflow: 'auto'
+    },
+    teamsPaper: {         
+      height: '100%',
+      position: 'absolute',
+      overflow: 'auto'
     },
     rootBox: {
       display: 'flex',
@@ -24,10 +33,12 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     playersBox: {
       flexGrow: 1,
+      position: 'relative',
       margin: theme.spacing(4),
     },
     teamsBox: {
-      flexGrow: 6,
+      flexGrow: 3,
+      // position: 'relative',
       margin: theme.spacing(4),
     }
   }));
@@ -36,52 +47,18 @@ export default function Dashboard() {
     const classes = useStyles();
 
     return (
-        <Paper className={classes.paper} elevation={5} >
+        <Paper className={classes.rootPaper} elevation={5} >
           <Box className={classes.rootBox}>
             <Box className={classes.playersBox}>
-              <Paper className={classes.paper} elevation={3} >
-                <List>
-                  <ListItem>
-                    <Box>
-                      <TextField color="secondary"
-                          // className={classes.textField}
-                          id="outlined-multiline-static"
-                          label="JSON"
-                          defaultValue="Default Value"
-                          variant="outlined"
-                          fullWidth={true}
-                      />
-                    </Box>
-                  </ListItem>
-                  <ListItem>
-                    <PlayerCard/>
-                  </ListItem>
-                  <ListItem>
-                    <PlayerCard/>
-                  </ListItem>
-                  <ListItem>
-                    <PlayerCard/>
-                  </ListItem>
-                  <ListItem>
-                    <PlayerCard/>
-                  </ListItem>
-                  <ListItem>
-                    <PlayerCard/>
-                  </ListItem>
-                  <ListItem>
-                    <PlayerCard/>
-                  </ListItem>
-                </List>                
+              <Paper className={classes.playersPaper} elevation={3} >
+                <PlayersList/>
               </Paper>
             </Box>
             <Box className={classes.teamsBox}>
-              <Paper className={classes.paper} elevation={3} >
-              
+              <Paper className={classes.teamsPaper} elevation={3} >
               </Paper>
             </Box>
           </Box>
         </Paper>
     );
-
-
 }
