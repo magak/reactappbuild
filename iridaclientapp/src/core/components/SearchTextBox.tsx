@@ -4,6 +4,8 @@ import Paper from '@material-ui/core/Paper';
 import InputBase from '@material-ui/core/InputBase';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
+import Tooltip from '@material-ui/core/Tooltip';
+
 import SearchIcon from '@material-ui/icons/Search';
 import ClearIcon from '@material-ui/icons/Clear';
 
@@ -42,9 +44,11 @@ export default function CustomizedInputBase() {
         <SearchIcon />
       </IconButton>
       <Divider className={classes.divider} orientation="vertical" />
-      <IconButton className={classes.iconButton} aria-label="directions">
-        <ClearIcon />
-      </IconButton>
+      <Tooltip title="clear" aria-label="clear">
+        <IconButton className={classes.iconButton} aria-label="directions">
+          <ClearIcon />
+        </IconButton>
+      </Tooltip>
     </Paper>
   );
 }

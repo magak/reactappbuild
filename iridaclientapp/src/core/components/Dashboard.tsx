@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme: Theme) =>
       margin: theme.spacing(4),
     },
     teamsBox: {
-      flexGrow: 3,
+      flexGrow: 2.3,
       // position: 'relative',
       margin: theme.spacing(4),
     }
