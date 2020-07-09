@@ -6,6 +6,7 @@ import Box from '@material-ui/core/Box';
 
 import PlayerCard from './PlayerCard';
 import PlayersList from './PlayersList';
+import TeamsList from './TeamsList';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -38,7 +39,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     teamsBox: {
       flexGrow: 2.3,
-      // position: 'relative',
+      position: 'relative',
       margin: theme.spacing(4),
     }
   }));
@@ -56,6 +57,7 @@ export default function Dashboard() {
             </Box>
             <Box className={classes.teamsBox}>
               <Paper className={classes.teamsPaper} elevation={3} >
+                <TeamsList/>
               </Paper>
             </Box>
           </Box>
