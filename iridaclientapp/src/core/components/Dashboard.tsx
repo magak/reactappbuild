@@ -17,11 +17,13 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     playersPaper: {         
       height: '100%',
+      width: '100%',
       position: 'absolute',
       overflow: 'auto'
     },
     teamsPaper: {         
       height: '100%',
+      width: '100%',
       position: 'absolute',
       overflow: 'auto'
     },

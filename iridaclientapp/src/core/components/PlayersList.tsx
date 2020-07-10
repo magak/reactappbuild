@@ -55,7 +55,7 @@ export default function PlayersList() {
             <ListItem>
                 <PlayerCard/>
             </ListItem>
-            <ListItem>
+            {/* <ListItem>
                 <PlayerCard/>
             </ListItem>
             <ListItem>
@@ -66,7 +66,7 @@ export default function PlayersList() {
             </ListItem>
             <ListItem>
                 <PlayerCard/>
-            </ListItem>
+            </ListItem> */}
         </List>
     );
 }

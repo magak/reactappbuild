@@ -19,7 +19,8 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       maxWidth: 465,
-      minWidth: 280
+      minWidth: 280,
+      marging: theme.spacing(4)
     },
     // media: {
     //   height: 0,
