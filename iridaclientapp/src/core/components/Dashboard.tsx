@@ -8,6 +8,8 @@ import PlayerCard from './PlayerCard';
 import PlayersList from './PlayersList';
 import TeamsList from './TeamsList';
 
+import { Tournament } from './../../models';
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     rootPaper: {         
@@ -47,14 +49,17 @@ const useStyles = makeStyles((theme: Theme) =>
   }));
 
 export default function Dashboard() {
+    const tournamentInit: Tournament = {players: [{id: 1, name: 'Michael Adams'}, {id: 2, name: 'Tim Collins'}, {id: 3, name: 'Kate Wood'}, {id: 4, name: 'Aaron Brown'}]};
     const classes = useStyles();
+    
+    const [tournament, setTournament] = React.useState<Tournament>(tournamentInit);
 
     return (
         <Paper className={classes.rootPaper} elevation={5} >
           <Box className={classes.rootBox}>
             <Box className={classes.playersBox}>
               <Paper className={classes.playersPaper} elevation={3} >
-                <PlayersList/>
+                <PlayersList Players={tournament.players}/>
               </Paper>
             </Box>
             <Box className={classes.teamsBox}>

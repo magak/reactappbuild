@@ -15,6 +15,8 @@ import Delete from '@material-ui/icons/Delete';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 
+import { Player } from './../../models';
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
@@ -40,7 +42,11 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-export default function PlayerCard() {
+interface PlayerProps {
+  Player: Player;
+};
+
+export default function PlayerCard(props: PlayerProps) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
@@ -53,7 +59,7 @@ export default function PlayerCard() {
       <CardHeader
         avatar={
           <Avatar aria-label="recipe" className={classes.avatar}>
-            P1
+            P{props.Player.id}
           </Avatar>
         }
         action={
@@ -61,7 +67,7 @@ export default function PlayerCard() {
             <MoreVertIcon />
           </IconButton>
         }
-        title="John Smith"
+        title={props.Player.name}
         // subheader="September 14, 2016"
       />
       {/* <CardMedia

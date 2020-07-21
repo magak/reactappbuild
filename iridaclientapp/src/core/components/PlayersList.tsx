@@ -9,6 +9,8 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import PlayerCard from './PlayerCard';
 import SearchTextBox from './SearchTextBox';
 
+import { Player } from './../../models';
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     divider: {
@@ -19,7 +21,11 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-export default function PlayersList() {
+interface PlayersListProps {
+    Players: Player[];
+};
+
+export default function PlayersList(props: PlayersListProps) {
     const classes = useStyles();
 
     return (
@@ -49,24 +55,11 @@ export default function PlayersList() {
                     </Toolbar>
                 </Paper>
             </ListSubheader>
-            <ListItem>
-                <PlayerCard/>
-            </ListItem>
-            <ListItem>
-                <PlayerCard/>
-            </ListItem>
-            {/* <ListItem>
-                <PlayerCard/>
-            </ListItem>
-            <ListItem>
-                <PlayerCard/>
-            </ListItem>
-            <ListItem>
-                <PlayerCard/>
-            </ListItem>
-            <ListItem>
-                <PlayerCard/>
-            </ListItem> */}
+            { props.Players.map((value) => (
+                <ListItem>
+                    <PlayerCard Player={value}/>
+                </ListItem>
+            ))}
         </List>
     );
 }
