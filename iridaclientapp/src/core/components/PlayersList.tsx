@@ -5,6 +5,7 @@ import IconButton from '@material-ui/core/IconButton';
 import AddBoxIcon from '@material-ui/icons/AddBox';
 import MenuIcon from '@material-ui/icons/Menu';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import { Droppable, Draggable } from 'react-beautiful-dnd';
 
 import PlayerCard from './PlayerCard';
 import SearchTextBox from './SearchTextBox';
@@ -30,18 +31,6 @@ export default function PlayersList(props: PlayersListProps) {
 
     return (
         <List>
-            {/* <ListSubheader>
-                <Paper elevation={3}>
-                    <Toolbar>
-                        <Tooltip title="Add" aria-label="add">
-                            <IconButton color="primary" size="small">
-                                <AddBoxIcon fontSize="large" />
-                            </IconButton>
-                        </Tooltip>
-                        <SearchTextBox/>
-                    </Toolbar>
-                </Paper>
-            </ListSubheader> */}
             <ListSubheader>
                 <Paper elevation={3}>
                     <Toolbar>
@@ -55,11 +44,39 @@ export default function PlayersList(props: PlayersListProps) {
                     </Toolbar>
                 </Paper>
             </ListSubheader>
-            { props.Players.map((value) => (
-                <ListItem>
-                    <PlayerCard Player={value}/>
-                </ListItem>
-            ))}
+
+            {/* { props.Players.map((value) => (
+                    <ListItem>
+                        <PlayerCard Player={value}/>
+                    </ListItem>
+                ))} */}
+
+            <Droppable droppableId="playersDroppable">
+                {(provided, snapshot) => (
+                    <div
+                    ref={provided.innerRef}>
+                    {props.Players.map((item, index) => (
+                        <Draggable
+                            key={item.id}
+                            draggableId={item.id.toString()}
+                            index={index}>
+                            {(provided, snapshot) => (
+                                <div
+                                    ref={provided.innerRef}
+                                    {...provided.draggableProps}
+                                    {...provided.dragHandleProps}
+                                    >
+                                    <ListItem>
+                                        <PlayerCard Player={item}/>
+                                    </ListItem>
+                                </div>
+                            )}
+                        </Draggable>
+                    ))}
+                    {provided.placeholder}
+                </div>
+                )}
+            </Droppable>
         </List>
     );
 }

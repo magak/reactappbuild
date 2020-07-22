@@ -3,6 +3,10 @@ export interface Player {
     name: string;
 };
 
+export interface PlayersGroup {
+
+};
+
 export interface Tournament {
     players: Player[]
 };

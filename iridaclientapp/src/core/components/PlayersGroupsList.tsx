@@ -10,7 +10,7 @@ import Paper from '@material-ui/core/Paper';
 import IconButton from '@material-ui/core/IconButton';
 import AddBoxIcon from '@material-ui/icons/AddBox';
 
-import TeamCard from './TeamCard';
+import PlayersGroupCard from './PlayersGroupCard';
 import SearchTextBox from './SearchTextBox';
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-export default function SpacingGrid() {
+export default function PlayersGroupList() {
   const classes = useStyles();
 
   return (
@@ -61,7 +61,7 @@ export default function SpacingGrid() {
             {[0, 1, 2].map((value) => (
               <Grid className={classes.gridItem} key={value} item>
                 {/* <Paper className={classes.paper} /> */}
-                <TeamCard/>
+                <PlayersGroupCard/>
               </Grid>
             ))}
           </Grid>
