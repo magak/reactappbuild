@@ -13,6 +13,8 @@ import AddBoxIcon from '@material-ui/icons/AddBox';
 import PlayersGroupCard from './PlayersGroupCard';
 import SearchTextBox from './SearchTextBox';
 
+import { Tournament } from './../../models';
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
@@ -36,7 +38,11 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-export default function PlayersGroupList() {
+interface PlayersGroupListProps {
+  Tournament: Tournament;
+}
+
+export default function PlayersGroupList(props: PlayersGroupListProps) {
   const classes = useStyles();
 
   return (
@@ -58,10 +64,10 @@ export default function PlayersGroupList() {
         </ListSubheader>
         <ListItem>
           <Grid container justify="space-around" >
-            {[0, 1, 2].map((value) => (
-              <Grid className={classes.gridItem} key={value} item>
+            {props.Tournament.playersGroup.map((value) => (
+              <Grid className={classes.gridItem} key={value.id} item>
                 {/* <Paper className={classes.paper} /> */}
-                <PlayersGroupCard/>
+                <PlayersGroupCard PlayersGroup={value} />
               </Grid>
             ))}
           </Grid>

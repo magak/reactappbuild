@@ -50,7 +50,24 @@ const useStyles = makeStyles((theme: Theme) =>
   }));
 
 export default function Dashboard() {
-    const tournamentInit: Tournament = {players: [{id: 1, name: 'Michael Adams'}, {id: 2, name: 'Tim Collins'}, {id: 3, name: 'Kate Wood'}, {id: 4, name: 'Aaron Brown'}]};
+    const tournamentInit: Tournament = 
+      {
+        players: [{id: 1, name: 'Michael Adams'}, {id: 2, name: 'Tim Collins'}, 
+                  {id: 3, name: 'Kate Wood'}, {id: 4, name: 'Aaron Brown'}
+                ],
+        playersGroup: [
+                { id: 1,
+                  players:
+                  [{index: 1, player: {id: 1, name: 'Michael Adams'}},
+                  {index: 2, player: {id: 4, name: 'Aaron Brown'}},
+                  {index: 3, player: {id: 3, name: 'Kate Wood'}}]
+                },
+                { id: 2,
+                  players:
+                  [{index: 1, player: {id: 1, name: 'Michael Adams'}}]
+                }
+              ]
+      };
     const classes = useStyles();
     
     const [tournament, setTournament] = React.useState<Tournament>(tournamentInit);
@@ -65,12 +82,12 @@ export default function Dashboard() {
             <DragDropContext onDragEnd={handleOnDragEnd}>
               <Box className={classes.playersBox}>
                 <Paper className={classes.playersPaper} elevation={3} >
-                  <PlayersList Players={tournament.players}/>
+                  <PlayersList Tournament={tournament}/>
                 </Paper>
               </Box>
               <Box className={classes.teamsBox}>
                 <Paper className={classes.teamsPaper} elevation={3} >
-                  <PlayersGroupsList/>
+                  <PlayersGroupsList Tournament={tournament}/>
                 </Paper>
               </Box>
             </DragDropContext>

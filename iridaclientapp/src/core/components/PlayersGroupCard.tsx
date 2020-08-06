@@ -15,6 +15,8 @@ import Delete from '@material-ui/icons/Delete';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 
+import { PlayersGroup } from './../../models';
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
@@ -42,7 +44,11 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-export default function PlayerCard() {
+interface PlayersGroupCardProps {
+  PlayersGroup: PlayersGroup;
+}
+
+export default function PlayerGroup(props: PlayersGroupCardProps) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 

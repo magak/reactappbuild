@@ -10,7 +10,7 @@ import { Droppable, Draggable } from 'react-beautiful-dnd';
 import PlayerCard from './PlayerCard';
 import SearchTextBox from './SearchTextBox';
 
-import { Player } from './../../models';
+import { Tournament } from './../../models';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 interface PlayersListProps {
-    Players: Player[];
+    Tournament: Tournament;
 };
 
 export default function PlayersList(props: PlayersListProps) {
@@ -55,7 +55,7 @@ export default function PlayersList(props: PlayersListProps) {
                 {(provided, snapshot) => (
                     <div
                     ref={provided.innerRef}>
-                    {props.Players.map((item, index) => (
+                    {props.Tournament.players.map((item, index) => (
                         <Draggable
                             key={item.id}
                             draggableId={item.id.toString()}
