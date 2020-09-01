@@ -4,6 +4,8 @@ import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
+import ListItem from '@material-ui/core/ListItem';
+import List from '@material-ui/core/List';
 import CardActions from '@material-ui/core/CardActions';
 import Collapse from '@material-ui/core/Collapse';
 import Avatar from '@material-ui/core/Avatar';
@@ -14,7 +16,9 @@ import Edit from '@material-ui/icons/Edit';
 import Delete from '@material-ui/icons/Delete';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import { Droppable, Draggable } from 'react-beautiful-dnd';
 
+import PlayerCard from './PlayerCard';
 import { PlayersGroup } from './../../models';
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -54,7 +58,7 @@ export default function PlayerGroup(props: PlayersGroupCardProps) {
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
-  };
+  };  
 
   return (
     <Card className={classes.root}>
@@ -69,7 +73,7 @@ export default function PlayerGroup(props: PlayersGroupCardProps) {
             <MoreVertIcon />
           </IconButton>
         }
-        title="John Smith"
+        title={`group ${props.PlayersGroup.id}`}
         // subheader="September 14, 2016"
       />
       {/* <CardMedia
@@ -102,21 +106,37 @@ export default function PlayerGroup(props: PlayersGroupCardProps) {
         </IconButton>
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
-          <Typography paragraph>John Albert Smith:</Typography>
-          <Typography paragraph>
-            Rating: 7.5
-          </Typography>
-          <Typography paragraph>
-            Total Matches count: 15
-          </Typography>
-          <Typography paragraph>
-            Win: 10
-          </Typography>
-          <Typography>
-            Lost: 5
-          </Typography>
-        </CardContent>
+        <List>
+          <Droppable droppableId={props.PlayersGroup.id.toString()}>
+            {(provided, snapshot) => (
+              <div
+                ref={provided.innerRef}
+                {...provided.droppableProps}>
+                  {props.PlayersGroup.players.map((item, index) => (
+                    <Draggable
+                      key={item.id}
+                      draggableId={item.id.toString()}
+                      index={index}>
+                      {(provided, snapshot) => (
+                        <div
+                          ref={provided.innerRef}
+                          {...provided.draggableProps}
+                          {...provided.dragHandleProps}
+                        >
+                        <ListItem>
+                          <PlayerCard Player={item}/>
+                        </ListItem>
+                        </div>
+                      )}
+                          </Draggable>
+                  ))}
+                    <ListItem>
+                        {provided.placeholder}
+                    </ListItem> 
+                  </div>
+                  )}
+          </Droppable>
+        </List>
       </Collapse>
     </Card>
   );

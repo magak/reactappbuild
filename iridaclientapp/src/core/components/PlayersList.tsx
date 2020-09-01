@@ -11,6 +11,7 @@ import PlayerCard from './PlayerCard';
 import SearchTextBox from './SearchTextBox';
 
 import { Tournament } from './../../models';
+import { PlayersListDroppableId } from './../../consts';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -51,10 +52,11 @@ export default function PlayersList(props: PlayersListProps) {
                     </ListItem>
                 ))} */}
 
-            <Droppable droppableId="playersDroppable">
+            <Droppable droppableId={PlayersListDroppableId}>
                 {(provided, snapshot) => (
                     <div
-                    ref={provided.innerRef}>
+                    ref={provided.innerRef}
+                    {...provided.droppableProps}>
                     {props.Tournament.players.map((item, index) => (
                         <Draggable
                             key={item.id}
@@ -69,11 +71,13 @@ export default function PlayersList(props: PlayersListProps) {
                                     <ListItem>
                                         <PlayerCard Player={item}/>
                                     </ListItem>
-                                </div>
+                                </div>                                
                             )}
                         </Draggable>
                     ))}
-                    {provided.placeholder}
+                    <ListItem>
+                        {provided.placeholder}
+                    </ListItem>                    
                 </div>
                 )}
             </Droppable>

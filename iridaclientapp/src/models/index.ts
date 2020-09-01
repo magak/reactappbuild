@@ -3,14 +3,9 @@ export interface Player {
     name: string;
 };
 
-export interface PlayerInGroup {
-    index: number;
-    player: Player;
-};
-
 export interface PlayersGroup {
     id: number;
-    players: PlayerInGroup[];    
+    players: Player[];    
 };
 
 export interface Tournament {
