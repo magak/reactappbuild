@@ -13,6 +13,8 @@ import SearchTextBox from './SearchTextBox';
 import { Tournament } from './../../models';
 import { PlayersListDroppableId } from './../../consts';
 
+import PlayerMaster from './dialogs/PlayerMaster';
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     divider: {
@@ -30,13 +32,25 @@ interface PlayersListProps {
 export default function PlayersList(props: PlayersListProps) {
     const classes = useStyles();
 
+    const [addDialogOpen, setAddDialogOpen] = React.useState(false);
+    const handleAddClick = () => {
+        setAddDialogOpen(true);
+    }
+
+    const handleAddClosedOk = (result: any) => {
+        const res = result;
+        setAddDialogOpen(false);
+        return result;
+    }
+
     return (
         <List>
             <ListSubheader>
-                <Paper elevation={3}>
+                <Paper elevation={1}>
                     <Toolbar>
+                        <PlayerMaster dialogOpened={addDialogOpen} closeDialogSave={handleAddClosedOk} />
                         <Tooltip title="Add" aria-label="menu">
-                            <IconButton size="small">
+                            <IconButton size="small" onClick={handleAddClick}>
                                 <AddBoxIcon />
                             </IconButton>
                         </Tooltip>

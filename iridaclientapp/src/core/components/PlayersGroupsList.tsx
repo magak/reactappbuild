@@ -50,7 +50,7 @@ export default function PlayersGroupList(props: PlayersGroupListProps) {
       //<Grid item xs={12}>
       <List>
         <ListSubheader>
-                <Paper elevation={3}>
+                <Paper elevation={1}>
                     <Toolbar>
                         <Tooltip title="Add" aria-label="menu">
                             <IconButton size="small">
